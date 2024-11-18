@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            body {
+                justify-content: center;
+                background: linear-gradient(45deg, rgb(16, 15, 15), grey);
+                margin: 0;
+                display: flex;
+                align-items: center;
+                height: 100vh;
+            }
+            #display {
+                width: 100%;
+                padding: 20px;
+                font-size: 5rem;
+                text-align: left;
+                border: none;
+                color: black;
+                height: 100px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+            #calculator {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 3rex;
+                font-weight: 200;
+                background: linear-gradient(45deg, rgb(255, 255, 255), lavender);
+                border-radius: 20px;
+                max-width: 600px;
+                overflow: hidden;
+            }
+            #keys {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                padding: 10px;
+            }
+            button {
+                width: 100px;
+                height: 100px;
+                border-radius: 50px;
+                background-color: rgb(40, 42, 44);
+                color: whitesmoke;
+                font-size: 3rem;
+                font-weight: 200;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                cursor: pointer;
+                border: none;
+            }
+            button:hover {
+                background-color: rgb(0, 0, 0);
+            }
+            button:active {
+                background-color: rgb(0, 0, 0);
+            }
+            .operator-btn {
+                background-color: rgb(1, 29, 33);
+            }
+            .operator-btn:hover {
+                background-color: rgb(6, 58, 66);
+            }
+            .operator-btn:active {
+                background-color: rgb(8, 56, 64);
+            }
+    
+        </style>
+    </head>
+    <body>
+        
+        <div id="calculator">
+            <input id="display" readonly>
+            <div id="keys">
+
+                <button onclick="ClearDisplay('+')" class="operator-btn">C</button>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('.')">.</button>
+                <br>
+                <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+                <button onclick="calculate()" class="operator-btn">=</button>
+            
+            </div>
+        </div>
+
+        <script>
+
+            const display=document.getElementById("display");
+
+            function appendToDisplay(input){
+                display.value += input;
+            }
+            
+            function ClearDisplay(){
+                display.value ="";
+            }
+
+            function calculate(){
+                try{
+                    display.value = eval(display.value);
+                }
+                catch(error){
+                    display.value = "Error";
+                }
+            }
+        </script>
+    
+    </body>
+</html>
